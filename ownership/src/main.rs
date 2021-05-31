@@ -50,13 +50,85 @@
 // }
 
 // 克隆
-fn main() {
-    // 使用 clone 的话，那么这 s1 和 s2 都会有值了
-    // 因为这里的数据是 clone 了一份
-    let s1 = String::from("hi, ni hao ya ");
-    let s2 = s1.clone();
+// fn main() {
+//     // 使用 clone 的话，那么这 s1 和 s2 都会有值了
+//     // 因为这里的数据是 clone 了一份
+//     let s1 = String::from("hi, ni hao ya ");
+//     let s2 = s1.clone();
 
-    println!("s1: {}; s2: {}", s1, s2);
+//     println!("s1: {}; s2: {}", s1, s2);
+// }
+
+// 所有权与函数
+
+// fn main() {
+//     let s = String::from("hello");
+
+//     // s 进入到函数内就会所有权转移（这里其实就是引用类型的话，会有所有权转移的操作）
+//     // 所有权转移就是为了安全
+//     // 然后在这个函数后面在访问 s 的时候， s 就实效了
+//     takes_ownership(s);
+//     // throw error
+//     // println!("{}", s);
+
+//     let x = 5;
+//     // x 是 copy 的进入 makes_copy 以后 依然有效
+
+//     makes_copy(x);
+//     // 这里访问一点问题都没有
+//     println!("{}", x);
+// }
+
+// fn takes_ownership(some_string: String) {
+//     println!("{}", some_string);
+// }
+
+// fn makes_copy(some_integer: i32) {
+//     println!("{}", some_integer);
+// }
+
+// 返回值与作用域
+
+// fn main() {
+//     let s1 = gives_ownership();
+//     // 这里是可以访问 s1 的，因为 gives_ownership 这个函数把 some_string return 出来了
+//     println!("{}", s1);
+
+//     let s2 = String::from("hello");
+
+//     let s3 = takes_and_gives_back(s2);
+//     // 这里 s3 和 s2 一样
+//     println!("{}", s3);
+// }
+
+// fn gives_ownership() -> String {
+//     let some_string = String::from("hello");
+
+//     some_string
+// }
+
+// fn takes_and_gives_back(a_string: String) -> String {
+//     a_string // 返回出去
+// }
+
+// 场景
+// 想把引用类型的变量给函数，然后后续还想继续使用
+// 而且还想返回多个值
+// 一下的形式过于麻烦和形式主义
+// 这个也是后续我们引入 引用的原因
+fn main() {
+    let s1 = String::from("hello");
+
+    let (s2, len) = calculate_length(s1);
+
+    println!("The length of '{}' is {}.", s2, len);
 }
 
-// TODO 所有权与函数
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len(); // len() 返回字符串的长度
+
+    // 直接使用的元组形式来返回多个值
+    // 但是太过于麻烦
+
+    (s, length)
+}
