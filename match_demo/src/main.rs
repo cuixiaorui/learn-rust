@@ -25,34 +25,48 @@
 // }
 
 // 绑定值得模式
+// fn main() {
+//     #[derive(Debug)]
+//     enum UsState {
+//         Alabama,
+//         Alaska,
+//     }
+
+//     #[derive(Debug)]
+//     enum Coin {
+//         Penny,
+//         Nickel,
+//         Dime,
+//         Quarter(UsState),
+//     }
+
+//     fn value_in_cents(coin: Coin) -> u8 {
+//         match coin {
+//             Coin::Penny => 1,
+//             Coin::Nickel => 5,
+//             Coin::Dime => 10,
+//             Coin::Quarter(state) => {
+//                 println!("State quarter from {:?}!", state);
+//                 25
+//             }
+//         }
+//     }
+
+//     let usState = value_in_cents(Coin::Quarter(UsState::Alaska));
+//     // output -> Alaska
+//     println!("usState {:?}!", UsState::Alaska);
+// }
+
+// 结合 option 枚举来使用
 fn main() {
-    #[derive(Debug)]
-    enum UsState {
-        Alabama,
-        Alaska,
-    }
+    let five = Some(5);
+    plus_one(five);
+    plus_one(None);
+}
 
-    #[derive(Debug)]
-    enum Coin {
-        Penny,
-        Nickel,
-        Dime,
-        Quarter(UsState),
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        Some(i) => Some(i + 1),
+        None => None,
     }
-
-    fn value_in_cents(coin: Coin) -> u8 {
-        match coin {
-            Coin::Penny => 1,
-            Coin::Nickel => 5,
-            Coin::Dime => 10,
-            Coin::Quarter(state) => {
-                println!("State quarter from {:?}!", state);
-                25
-            }
-        }
-    }
-
-    let usState = value_in_cents(Coin::Quarter(UsState::Alaska));
-    // output -> Alaska
-    println!("usState {:?}!", UsState::Alaska);
 }
