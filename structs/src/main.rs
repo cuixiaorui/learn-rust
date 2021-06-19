@@ -78,15 +78,17 @@
 //     println!("user2 -> age {}", user2.age);
 // }
 
-fn main() {
-    // 使用没有命名字段的元组结构体来创建不同的类型
-    // 也可以定义与元组（在第三章讨论过）类似的结构体，称为 元组结构体（tuple structs）
-    struct Color(i32, i32, i32);
-    struct Point(i32, i32, i32);
+// fn main() { // 使用没有命名字段的元组结构体来创建不同的类型
+//     // 也可以定义与元组（在第三章讨论过）类似的结构体，称为 元组结构体（tuple structs）
+//     struct Color(i32, i32, i32);
+//     struct Point(i32, i32, i32);
 
-    let black = Color(0, 1, 2);
-    let origin = Point(0, 0, 0);
+//     let black = Color(0, 1, 2);
+//     let origin = Point(0, 0, 0);
 
-    println!("black {}", black.0);
-    println!("black {}", black.1);
-}
+//     println!("black {}", black.0);
+//     println!("black {}", black.1);
+// }
+
+
+
